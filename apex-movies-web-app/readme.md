@@ -14,5 +14,6 @@ It is totaly free, takes less than 2 minutes. Credit card information is require
 2. Download [this](./resources/tmdb-movies_smaller.csv "CSV file") csv file which I downloaded from [The Movie Database](www.themoviedb.org). 
 
 ### 1. Create Autonoumous Database (2 minutes)
-![Create Database Recording](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Create Database")
+![Create Database Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/1-CreateDatabase.gif "Create Database")
+
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help button on the very same screen.
