@@ -13,8 +13,8 @@ It is totaly free, takes less than 2 minutes. Credit card information is require
 
 2. Download [this](./resources/tmdb-movies_smaller.csv "CSV file") csv file which I downloaded from [The Movie Database](www.themoviedb.org). 
 
-### 1. Create Autonoumous Database (01:50)
-![Create Database Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/1-CreateDatabase.gif "Create Database")
+### 1. Create Autonoumous Database (2 min)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UxOJerYPbns" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help button on the very same screen.
 
@@ -140,6 +140,7 @@ and nvl(budget,0) > 0
 group by genre
 order by 4 asc
 ```
+ - Select line for 
  - For the ROI series set **Assigned To Y2 Axis** to yes
 
 #### 7.4. Chart Major Producers (01:45)
