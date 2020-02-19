@@ -17,13 +17,13 @@ for free for life as long as you use them.
 2. Download [this csv file](./resources/tmdb-movies_smaller.csv "CSV file") which I downloaded from [The Movie Database](www.themoviedb.org).
 
 ### Steps
-1. [Create Autonoumous Database](#create-autonoumous-database-2-min)
-2. [Create Apex Workspace](#Create-Apex-Workspace-40-sec)
-3. [Load CSV File](#Load-CSV-File-1-min) 
-4. [Create Application](#Create-Application-1-min) 
-5. [Run Application for the First Time](#Run-Application-for-the-First-Time-1-min) 
-6. [Calendar Page](#Calendar-Page-1-min)
-7. [Dashboard](#Dashboard-6-min)
+1. [Create Autonoumous Database](#1-create-autonoumous-database-2-min)
+2. [Create Apex Workspace](#2-create-Apex-Workspace-40-sec)
+3. [Load CSV File](#3-load-csv-file-1-min) 
+4. [Create Application](#4-create-application-1-min) 
+5. [Run Application for the First Time](#5-run-application-for-the-first-time-1-min) 
+6. [Calendar Page](#6-calendar-page-1-min)
+7. [Dashboard](#7-dashboard-6-min)
   7.1. [Chart Genres](#Chart-Genres-1-min)
   7.2. [Chart Runtime](#Chart-Runtime-1-min)
   7.3. [Chart ROI](#Chart-ROI-2-min)
