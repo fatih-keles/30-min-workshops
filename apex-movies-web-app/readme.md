@@ -38,8 +38,6 @@ Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv
 [![Create Apex Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 ### 4. Create Application (00:56)
-![Create Application Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/4-CreateApplication.gif "Create Application")
-
 After loading csv file data into **movies** table, create application. Apex analyzes data and suggests you the best possible page options you may want to create. In this example we will have
  - Home Page (Blank)
  - Dashboard Page (With charts offered by Apex)
@@ -59,9 +57,10 @@ Most of the work will be done by automatically by Apex. We will interfere very l
  - Click **Check All** Features
  - Create application 
  
+*Control click the below screenshot to see the video*
+[![Create Application](./resources/create-application.jpg)](https://youtu.be/q2Fm9OvrQEs)
+ 
 ### 5. Run Application for the First Time (00:46)
-![Run Application for the First Time Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/5-RunApplicationFirstTime.gif "Run Application for the First Time")
-
 Now lets run the application for the first time and see what Apex has done for us. 
  - Login to application with **DEMO** user
  - Navigate to **Dashboard** and inspect the charts suggested by Apex.
@@ -69,9 +68,10 @@ Now lets run the application for the first time and see what Apex has done for u
  - See **Movies Report** page, which looks like a regualar tabular report page.
  - Inspect **Calendar** page see how the movies are placed on calendar according to release date.
  
+*Control click the below screenshot to see the video*
+[![Run Application First Time](./resources/run-application-first-time.jpg)](https://youtu.be/Smrt0Qtnadc)
+ 
 ### 6. Calendar Page (00:45)
-![Calendar Page Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/6-EditCalendarPage.gif "Calendar Page")
-
 Lets start with an easy fix, current calendar page doesn't display movie titles. 
  - Navigate to Calendar page
  - Click **Quick Edit** on the developer toolbar at the bottom of the page and then click anywhere on the calendar. This will take you to calendar page in the editor.
@@ -81,6 +81,9 @@ Lets start with an easy fix, current calendar page doesn't display movie titles.
 Display Column: TITLE 
 ```
  - Save and run the page to see what changed
+
+*Control click the below screenshot to see the video*
+[![Edit Calendar Page](./resources/calendar-page.jpg)](https://youtu.be/WpJa9wHkcF4)
 
 ### 7. Dashboard (05:45)
 Apex suggested a good start for our dashboard, we will improve the page for finding answers to the following questions.
