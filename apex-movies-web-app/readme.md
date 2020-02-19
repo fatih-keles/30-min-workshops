@@ -17,25 +17,25 @@ for free for life as long as you use them.
 2. Download [this csv file](./resources/tmdb-movies_smaller.csv "CSV file") which I downloaded from [The Movie Database](www.themoviedb.org).
 
 ### Steps
-1. [Create Autonoumous Database](#Create-Autonoumous-Database-2-min)
-2. [Create Apex Workspace](#Create-Apex-Workspace-40-sec)
-3. [Load CSV File](#Load-CSV-File-1-min) 
-4. [Create Application](#Create-Application-1-min) 
-5. [Run Application for the First Time](#Run-Application-for-the-First-Time-1-min) 
-6. [Calendar Page](#Calendar-Page-1-min)
-7. [Dashboard](#Dashboard-6-min)
-  7.1. [Chart Genres](#Chart-Genres-1-min)
-  7.2. [Chart Runtime](#Chart-Runtime-1-min)
-  7.3. [Chart ROI](#Chart-ROI-2-min)
-  7.4. [Chart Major Producers](#Chart-Major-Producers)
+1. [Create Autonoumous Database(2 min)](#create-autonoumous-database)
+2. [Create Apex Workspace (1 min)](#create-apex-workspace)
+3. [Load CSV File (1 min)](#load-csv-file) 
+4. [Create Application (1 min)](#create-application) 
+5. [Run Application for the First Time (1 min)](#run-application-for-the-first-time) 
+6. [Calendar Page (1 min)](#Calendar-Page)
+7. [Dashboard (6 min)](#dashboard)
+  7.1. [Chart Genres (1 min)](#chart-genres)
+  7.2. [Chart Runtime (1 min)](#chart-runtime)
+  7.3. [Chart ROI (2 min)](#chart-roi)
+  7.4. [Chart Major Producers (2 min)](#chart-major-producers)
 
-### 1. Create Autonoumous Database (2 min)
+### 1. Create Autonoumous Database
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
 *Control click the below screenshot to see the video*
 [![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
-### 2. Create Apex Workspace (40 sec)
+### 2. Create Apex Workspace
 Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
 
 *Control click the below screenshot to see the video*
