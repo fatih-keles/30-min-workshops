@@ -17,32 +17,32 @@ for free for life as long as you use them.
 2. Download [this csv file](./resources/tmdb-movies_smaller.csv "CSV file") which I downloaded from [The Movie Database](www.themoviedb.org).
 
 ### Steps
-1. [Create Autonoumous Database(2 min)](#create-autonoumous-database)
-2. [Create Apex Workspace (1 min)](#create-apex-workspace)
-3. [Load CSV File (1 min)](#load-csv-file) 
-4. [Create Application (1 min)](#create-application) 
-5. [Run Application for the First Time (1 min)](#run-application-for-the-first-time) 
-6. [Calendar Page (1 min)](#Calendar-Page)
-7. [Dashboard (6 min)](#dashboard)
-  7.1. [Chart Genres (1 min)](#chart-genres)
-  7.2. [Chart Runtime (1 min)](#chart-runtime)
-  7.3. [Chart ROI (2 min)](#chart-roi)
-  7.4. [Chart Major Producers (2 min)](#chart-major-producers)
+1. [Create Autonoumous Database](#create-autonoumous-database-2-min)
+2. [Create Apex Workspace](#Create-Apex-Workspace-40-sec)
+3. [Load CSV File](#Load-CSV-File-1-min) 
+4. [Create Application](#Create-Application-1-min) 
+5. [Run Application for the First Time](#Run-Application-for-the-First-Time-1-min) 
+6. [Calendar Page](#Calendar-Page-1-min)
+7. [Dashboard](#Dashboard-6-min)
+  7.1. [Chart Genres](#Chart-Genres-1-min)
+  7.2. [Chart Runtime](#Chart-Runtime-1-min)
+  7.3. [Chart ROI](#Chart-ROI-2-min)
+  7.4. [Chart Major Producers](#Chart-Major-Producers)
 
-### 1. Create Autonoumous Database
+### 1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
 *Control click the below screenshot to see the video*
 [![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
-### 2. Create Apex Workspace
+### 2. Create Apex Workspace (40 sec)
 Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
 
 *Control click the below screenshot to see the video*
 [![Create Apex Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
 
 
-### 3. Load CSV File
+### 3. Load CSV File (1 min)
 Logout from *Administration Services* and login using *Workspace Sign-In*
 
 Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv "CSV file")
@@ -50,7 +50,7 @@ Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv
 *Control click the below screenshot to see the video*
 [![Create Apex Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
-### 4. Create Application
+### 4. Create Application (1 min)
 After loading csv file data into **movies** table, create application. Apex analyzes data and suggests you the best possible page options you may want to create. In this example we will have
  - Home Page (Blank)
  - Dashboard Page (With charts offered by Apex)
@@ -73,7 +73,7 @@ Most of the work will be done by automatically by Apex. We will interfere very l
 *Control click the below screenshot to see the video*
 [![Create Application](./resources/create-application.jpg)](https://youtu.be/q2Fm9OvrQEs)
  
-### 5. Run Application for the First Time
+### 5. Run Application for the First Time (1 min)
 Now lets run the application for the first time and see what Apex has done for us. 
  - Login to application with **DEMO** user
  - Navigate to **Dashboard** and inspect the charts suggested by Apex.
@@ -84,7 +84,7 @@ Now lets run the application for the first time and see what Apex has done for u
 *Control click the below screenshot to see the video*
 [![Run Application First Time](./resources/run-application-first-time.jpg)](https://youtu.be/Smrt0Qtnadc)
  
-### 6. Calendar Page
+### 6. Calendar Page (1 min)
 Lets start with an easy fix, current calendar page doesn't display movie titles. 
  - Navigate to Calendar page
  - Click **Quick Edit** on the developer toolbar at the bottom of the page and then click anywhere on the calendar. This will take you to calendar page in the editor.
@@ -98,7 +98,7 @@ Display Column: TITLE
 *Control click the below screenshot to see the video*
 [![Edit Calendar Page](./resources/calendar-page.jpg)](https://youtu.be/WpJa9wHkcF4)
 
-### 7. Dashboard
+### 7. Dashboard (6 min)
 Apex suggested a good start for our dashboard, we will improve the page for finding answers to the following questions.
  1. What are the most popular genres?
  2. What is the average movie length?
@@ -107,7 +107,7 @@ Apex suggested a good start for our dashboard, we will improve the page for find
 
 Use the application builder and edit dashboard with page designer.
 
-#### 7.1. Chart Genres
+#### 7.1. Chart Genres (1 min)
   - Use this sql for series data source
 ```sql
 select GENRE, count(*) value
@@ -131,7 +131,7 @@ Region.Series.[0].Label.Display As: Label
 *Control click the below screenshot to see the video*
 [![Chart Genres](./resources/edit-dashboard-genres.jpg)](https://youtu.be/WpJa9wHkcF4)
 
-#### 7.2. Chart Runtime
+#### 7.2. Chart Runtime (1 min)
  - Use this sql for series data source
 ```sql
 select runtime, count(*) value
@@ -154,7 +154,7 @@ Region.Axes.x.Title: Minutes
 *Control click the below screenshot to see the video*
 [![Chart Runtime](./resources/edit-dashboard-runtime.jpg)](https://youtu.be/rRWLwI6fLl8)
 
-#### 7.3. Chart ROI
+#### 7.3. Chart ROI (2 min)
  - This chart is going to be a little complicated. We want to see how much is spend on each genre and how it is paying off. 
  - We will use 3 series, **Budget** and **Revenue** share the same y-axis whereas **ROI** uses the y2-axis as it is more like a percent
 ```
@@ -192,7 +192,7 @@ Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
 *Control click the below screenshot to see the video*
 [![Chart ROI](./resources/edit-dashboard-roi.jpg)](https://youtu.be/qdY-XIH6y04)
 
-#### 7.4. Chart Major Producers
+#### 7.4. Chart Major Producers (2 min)
  - In this chart we are going to display 4 different information and relationhips, so we are using a bubble chart.
  - Use this query for series data source
 ```sql
