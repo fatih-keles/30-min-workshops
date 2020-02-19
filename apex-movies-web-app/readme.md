@@ -1,5 +1,5 @@
 # 30 Minutes Workshop: Develop a Movie Application with Apex
----
+
 ## Purpose
 You will develop a web application with a dashboard, calendar and faceted search page in 30 minutes. 
 
@@ -19,24 +19,23 @@ for free for life as long as you use them.
 ### 1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
+*Control click the below screenshot to see the video*
 [![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
 ### 2. Create Apex Workspace (00:40)
 Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
 
-<table border="1" cellpadding="10">
- <tr>
-   <td valign="top"><div><img alt="Open Apex Console" src="./resources/create-apex-workspace-1.JPG" alt="1-Open Apex Console" width="300" height=""><span>1-Open Apex Console</span></div></td>
-   <td valign="top"><div><img alt="Set ADMIN password" src="./resources/create-apex-workspace-2.JPG" alt="2-Login to Administration Services with ADMIN user" width="300" height=""><span>2-Login to Administration Services with ADMIN user</span></div></td>
-   <td valign="top"><div><img alt="License and labels" src="./resources/create-apex-workspace-3.JPG" alt="3-Create a workspace" width="300" height=""><span>3-Create a workspace</span></div></td>
- </tr>
-</table>
+*Control click the below screenshot to see the video*
+[![Create Apex Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
 
 
 ### 3. Load CSV File (01:07)
 Logout from *Administration Services* and login using *Workspace Sign-In*
 
 Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv "CSV file")
+
+*Control click the below screenshot to see the video*
+[![Create Apex Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 ### 4. Create Application (00:56)
 ![Create Application Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/4-CreateApplication.gif "Create Application")
