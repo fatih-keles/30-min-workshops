@@ -95,7 +95,6 @@ Apex suggested a good start for our dashboard, we will improve the page for find
 Use the application builder and edit dashboard with page designer.
 
 #### 7.1. Chart Genres (01:06)
-![Chart Genres Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/7.1-EditDashboard.Genres.gif "Chart Genres") 
   - Use this sql for series data source
 ```sql
 select GENRE, count(*) value
@@ -116,8 +115,10 @@ Region.Series.[0].Label.Show: Yes
 Region.Series.[0].Label.Display As: Label
 ```
 
+*Control click the below screenshot to see the video*
+[![Chart Genres](./resources/edit-dashboard-genres.jpg)](https://youtu.be/WpJa9wHkcF4)
+
 #### 7.2. Chart Runtime (01:07)
-![Edit Chart Runtime Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/7.2-EditDashboard.Runtime.gif "Chart Runtime") 
  - Use this sql for series data source
 ```sql
 select runtime, count(*) value
@@ -130,17 +131,24 @@ order by 1 asc
  - Make these changes on the second chart
 ```
 Region.Title: Runtime
-Region.Attributes.Chart Type: Bar
+Region.Attributes.Chart.Type: Bar
 Region.Series.[0].Column Mapping.Label: RUNTIME
 Region.Series.[0].Column Mapping.Value: VALUE
 Region.Series.[0].Performance.Maximum Rows to Process: Null
 Region.Axes.x.Title: Minutes
 ```
 
+*Control click the below screenshot to see the video*
+[![Chart Genres](./resources/edit-dashboard-runtime.jpg)](https://youtu.be/rRWLwI6fLl8)
+
 #### 7.3. Chart ROI (01:47)
-![Edit Chart ROI Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/7.3-EditDashboard.ROI.gif "Chart ROI") 
  - This chart is going to be a little complicated. We want to see how much is spend on each genre and how it is paying off. 
  - We will use 3 series, **Budget** and **Revenue** share the same y-axis whereas **ROI** uses the y2-axis as it is more like a percent
+```
+Region.Title: Return
+Region.Attributes.Chart.Type: Combination
+Region.Attributes.Tooltip.Show Group Name: False
+```
  - Use the following sql for each series.
 ```sql 
 select genre, avg(budget) avg_budget, avg(revenue) avg_revenue, trunc(sum(revenue)/sum(budget)*100, 2) avg_return
@@ -152,8 +160,24 @@ and nvl(budget,0) > 0
 group by genre
 order by 4 asc
 ```
- - Select line for 
- - For the ROI series set **Assigned To Y2 Axis** to yes
+ - Add Budget and Revenue Series 
+```
+Region.Series.[Budget|Revenue].Identification.Name: Budget|Revenue
+Region.Series.[Budget|Revenue].Identification.Type: Bar 
+Region.Series.[Budget|Revenue].Column Mapping.Label: GENRE
+Region.Series.[Budget|Revenue].Column Mapping.Label: AVG_BUDGET|AVG_REVENUE
+```
+ - Add ROI Series and set **Assigned To Y2 Axis** to true
+```
+Region.Series.[ROI].Identification.Name: ROI
+Region.Series.[ROI]].Identification.Type: Line 
+Region.Series.[ROI]].Column Mapping.Label: GENRE
+Region.Series.[ROI].Column Mapping.Label: AVG_RETURN
+Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
+```
+ 
+*Control click the below screenshot to see the video*
+[![Chart Genres](./resources/edit-dashboard-roi.jpg)](https://youtu.be/qdY-XIH6y04)
 
 #### 7.4. Chart Major Producers (01:45)
 ![Edit Chart Producers Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/7.4-EditDashboard.Producers.gif "Edit Chart Producers") 
