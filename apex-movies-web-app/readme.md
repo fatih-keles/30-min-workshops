@@ -9,14 +9,19 @@ Oracle Application Express youtube [channel](https://www.youtube.com/channel/UCE
 ## Prerequsites
 1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). 
 
-It is totaly free, takes less than 2 minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get 2 Oracle databases, 2 VMs for free for life as long as you use them.
+It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
+  * 2 Oracle Autonomous Databases
+  * 2 Virtual Machines 
+for free for life as long as you use them.
 
-2. Download [this](./resources/tmdb-movies_smaller.csv "CSV file") csv file which I downloaded from [The Movie Database](www.themoviedb.org). 
+2. Download [this csv file](./resources/tmdb-movies_smaller.csv "CSV file") which I downloaded from [The Movie Database](www.themoviedb.org). 
 
 ### 1. Create Autonoumous Database (2 min)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UxOJerYPbns" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
-Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help button on the very same screen.
+![alt text](./resources/create-autonomous-database-1.JPG "Create database -1")
+![alt text](./resources/create-autonomous-database-2.JPG "Create database -2")
+![alt text](./resources/create-autonomous-database-3.JPG "Create database -3")
 
 ### 2. Create Apex Workspace (00:40)
 ![Create Database Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/2-CreateApexWorkspace.gif "Create Apex Workspace")
