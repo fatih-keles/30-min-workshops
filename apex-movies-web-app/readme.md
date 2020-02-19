@@ -19,17 +19,22 @@ for free for life as long as you use them.
 ### 1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
-![alt text](./resources/create-autonomous-database-1.JPG "Create database -1")
-![alt text](./resources/create-autonomous-database-2.JPG "Create database -2")
-![alt text](./resources/create-autonomous-database-3.JPG "Create database -3")
+[![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
 ### 2. Create Apex Workspace (00:40)
-![Create Database Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/2-CreateApexWorkspace.gif "Create Apex Workspace")
-
 Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
 
+<table border="1" cellpadding="10">
+ <tr>
+   <td valign="top"><div><img alt="Open Apex Console" src="./resources/create-apex-workspace-1.JPG" alt="1-Open Apex Console" width="300" height=""><span>1-Open Apex Console</span></div></td>
+   <td valign="top"><div><img alt="Set ADMIN password" src="./resources/create-apex-workspace-2.JPG" alt="2-Login to Administration Services with ADMIN user" width="300" height=""><span>2-Login to Administration Services with ADMIN user</span></div></td>
+   <td valign="top"><div><img alt="License and labels" src="./resources/create-apex-workspace-3.JPG" alt="3-Create a workspace" width="300" height=""><span>3-Create a workspace</span></div></td>
+ </tr>
+</table>
+
+
 ### 3. Load CSV File (01:07)
-![Create Database Recording](https://github.com/fatih-keles/30-min-workshops/blob/master/apex-movies-web-app/resources/3-LoadCSVFile.gif "Load CSV File")
+Logout from *Administration Services* and login using *Workspace Sign-In*
 
 Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv "CSV file")
 
