@@ -1,4 +1,5 @@
 # 30 Minutes Workshop: Develop a Movie Application with Apex
+![Save Time](./resources/save-time-1.jpg)
 
 ## Purpose
 You will develop a web application with a dashboard, calendar and faceted search page in 30 minutes. 
