@@ -16,7 +16,7 @@ for free for life as long as you use them.
 
 2. Download [this csv file](./resources/tmdb-movies_smaller.csv "CSV file") which I downloaded from [The Movie Database](www.themoviedb.org).
 
-### Steps
+## Steps
 1. [Create Autonoumous Database](#1-create-autonoumous-database-2-min)
 2. [Create Apex Workspace](#2-create-Apex-Workspace-40-sec)
 3. [Load CSV File](#3-load-csv-file-1-min) 
@@ -27,9 +27,11 @@ for free for life as long as you use them.
 	- [Chart Genres](#71-chart-genres-1-min)
 	- [Chart Runtime](#72-chart-runtime-1-min)
 	- [Chart ROI](#73-chart-roi-2-min)
-	- [Chart Major Producers](#74-chart-major-producers)
+	- [Chart Major Producers](#74-chart-major-producers-2-min)
+8. [Report Page](#8-report-page-5-min)
+9. [Faceted Search Page](#9-faceted-search-page-8-min)
 
-### 1. Create Autonoumous Database (2 min)
+##  1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
 *Control click the below screenshot to see the video*
@@ -37,7 +39,7 @@ Create your autonomous database in your cloud account. The interface is very int
 
 [^ back](#steps)
 
-### 2. Create Apex Workspace (40 sec)
+##  2. Create Apex Workspace (40 sec)
 Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
 
 *Control click the below screenshot to see the video*
@@ -45,7 +47,7 @@ Login with **ADMIN** user and create an Apex workspace. By doing this you will a
 
 [^ back](#steps)
 
-### 3. Load CSV File (1 min)
+##  3. Load CSV File (1 min)
 Logout from *Administration Services* and login using *Workspace Sign-In*
 
 Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv "CSV file")
@@ -55,7 +57,7 @@ Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv
 
 [^ back](#steps)
 
-### 4. Create Application (1 min)
+##  4. Create Application (1 min)
 After loading csv file data into **movies** table, create application. Apex analyzes data and suggests you the best possible page options you may want to create. In this example we will have
  - Home Page (Blank)
  - Dashboard Page (With charts offered by Apex)
@@ -80,7 +82,7 @@ Most of the work will be done by automatically by Apex. We will interfere very l
 
 [^ back](#steps)
  
-### 5. Run Application for the First Time (1 min)
+##  5. Run Application for the First Time (1 min)
 Now lets run the application for the first time and see what Apex has done for us. 
  - Login to application with **DEMO** user
  - Navigate to **Dashboard** and inspect the charts suggested by Apex.
@@ -93,7 +95,7 @@ Now lets run the application for the first time and see what Apex has done for u
 
 [^ back](#steps)
  
-### 6. Calendar Page (1 min)
+##  6. Calendar Page (1 min)
 Lets start with an easy fix, current calendar page doesn't display movie titles. 
  - Navigate to Calendar page
  - Click **Quick Edit** on the developer toolbar at the bottom of the page and then click anywhere on the calendar. This will take you to calendar page in the editor.
@@ -109,7 +111,7 @@ Display Column: TITLE
 
 [^ back](#steps)
 
-### 7. Dashboard (6 min)
+##  7. Dashboard (6 min)
 Apex suggested a good start for our dashboard, we will improve the page for finding answers to the following questions.
  1. What are the most popular genres?
  2. What is the average movie length?
@@ -119,6 +121,7 @@ Apex suggested a good start for our dashboard, we will improve the page for find
 Use the application builder and edit dashboard with page designer.
 
 #### 7.1. Chart Genres (1 min)
+We want to see which genre is most popular by comparing number of movies with a nice pie chart. 
   - Use this sql for series data source
 ```sql
 select GENRE, count(*) value
@@ -145,6 +148,7 @@ Region.Series.[0].Label.Display As: Label
 [^ back](#steps)
 
 #### 7.2. Chart Runtime (1 min)
+We want to show all records at once and runtime is a good candidate for this. We will see a bell shaped normal distribution that should be noticed.
  - Use this sql for series data source
 ```sql
 select runtime, count(*) value
@@ -170,14 +174,14 @@ Region.Axes.x.Title: Minutes
 [^ back](#steps)
 
 #### 7.3. Chart ROI (2 min)
- - This chart is going to be a little complicated. We want to see how much is spend on each genre and how it is paying off. 
- - We will use 3 series, **Budget** and **Revenue** share the same y-axis whereas **ROI** uses the y2-axis as it is more like a percent
+This chart is going to be a little complicated. We want to see how much is spend on each genre and how it is paying off. We will use 3 series, **Budget** and **Revenue** share the same y-axis whereas **ROI** uses the y2-axis as it is more like a percent
+ - Make these changes on the third chart
 ```
 Region.Title: Return
 Region.Attributes.Chart.Type: Combination
 Region.Attributes.Tooltip.Show Group Name: False
 ```
- - Use the following sql for each series.
+ - Use the following sql for each series (Alternatively you can also copy and paste the series then change it).
 ```sql 
 select genre, avg(budget) avg_budget, avg(revenue) avg_revenue, trunc(sum(revenue)/sum(budget)*100, 2) avg_return
 from MOVIES
@@ -210,7 +214,7 @@ Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
 [^ back](#steps)
 
 #### 7.4. Chart Major Producers (2 min)
- - In this chart we are going to display 4 different information and relationhips, so we are using a bubble chart.
+In this chart we are going to display 4 different information and relationhips, so we are using a bubble chart.
  - Use this query for series data source
 ```sql
 select production_company, sum(budget) budget, sum(revenue) revenue, count(*) ctr
@@ -237,6 +241,93 @@ Region.Axes.y.Title: Budget
 ```
 
 *Control click the below screenshot to see the video*
-[![Chart Producers](./resources/edit-dashboard-producers.jpg.jpg)](https://youtu.be/_lEY1nDCRq8)
+[![Chart Producers](./resources/edit-dashboard-producers.jpg)](https://youtu.be/_lEY1nDCRq8)
+
+[^ back](#steps)
+
+## 8. Report Page (5 min)
+This is pretty much looks like a tabular report page. Whereas there is more provided by Apex behind it. 
+ - First simplfy the report by selecting the display columns and **Save** it.
+```
+Display in Report
+	Title
+	Genre
+	Release Date
+	Production Company
+	Popularity
+	Vote Average
+	Budget
+	Revenue
+```
+ - **Search Text** like "lord of the rings" or "amadeus" or "lucasfilm"
+ - Let's experiment with **Group By** functionality
+```sql
+Avg(Budget), Avg(Revenue), Avg(Vote Average), Count(*) Group by Genre
+```
+ - Try to find which genre has most revenue and liked by people 
+```
+Order by Revenue desc, Vote Average desc
+```
+ - Now change group by from *Genre* to *Production Company* and averages to sum function so that we can see biggest production companies. 
+ - Let's create the genre chart here, but this time we can **Filter**
+```
+Count(*) Group by Genre
+```
+ - Explore **Download** menu
+ - Explore **Subscribe** menu
+
+*Control click the below screenshot to see the video*
+[![Report Page](./resources/report-page.jpg)](https://youtu.be/AHfihurkGKQ)
+
+[^ back](#steps)
+
+## 9. Faceted Search Page (8 min)
+We modified faceted search page to display cards. This page will be most appealing page when we are done. 
+ -  *POSTER_PATH* column to page source query. Follow *Content Body.Movies.Source.SQL Query* path on page components. You will be able to see new column. Also check if you already have *TITLE*
+ - Edit *CARD_TEXT* to display the movie poster.
+```
+Content Body.Movies.Columns.CARD_TEXT.Column Formatting.HTML Expression: &lt;img src="https://image.tmdb.org/t/p/w500/#POSTER_PATH#" alt="#TITLE# Poster" style="max-width: 100%"/&gt;
+```
+ - Follow *Content Body.Movies.Source.SQL Query* path on page components and replace *null CARD_LINK,* with the following piece of SQL query.
+```sql
+'https://www.imdb.com/title/'||IMDB_ID CARD_LINK,
+```
+ - Change the display features using "Quick Edit" feature at runtime.
+```
+Content Body.Movies.Attributes.Appearance.Template Options.Icons: No Icons
+Content Body.Movies.Attributes.Appearance.Template Options.Layout: 5 Columns
+```
+ - In order to add a facet for Production Companies we need to add *PRODUCTION_COMPANY* column to page source query. Follow *Content Body.Movies.Source.SQL Query* path on page components.
+ - Create a new facet as first item
+```
+Search.Facets.[0].Identification.Name: P8_PRODUCTION_COMPANY
+Search.Facets.[0].Label.Label: Production Companies
+Search.Facets.[0].List of Values.Type: Distinct Values
+Search.Facets.[0].Source.Database Column: PRODUCTION_COMPANY
+```
+
+ - Create a new *Region* in *Breadcrumb Bar* position
+```
+Breadcrumb Bar.[0].Identification.Title: Search Bar Region
+Breadcrumb Bar.[0].Appearance.Template: Blank with Attributes (No Grid)
+```
+ - Under newly created region create a new *Page Item*
+```
+Breadcrumb Bar.Search Bar Region.[].Name: P8_SEARCH_TEXT
+Breadcrumb Bar.Search Bar Region.[].Appearance.Template: Hidden
+Breadcrumb Bar.Search Bar Region.[].Appearance.Icon: fa-search
+Breadcrumb Bar.Search Bar Region.[].Appearance.Value Placeholder: Search Movies...
+Breadcrumb Bar.Search Bar Region.[].Appearance.Template Options.Stretch Form Item: True
+Breadcrumb Bar.Search Bar Region.[].Appearance.Template Options.Size: X Large
+```
+ - Modify search facet to use the text field
+```
+Search.Facets.P8_SEARCH.Settings.Input Field: External Page Item
+Search.Facets.P8_SEARCH.Settings.External Page Item: P8_SEARCH_PRODUCTION_COMPANY
+```
+ - Delete Breadcrumb page title
+ 
+*Control click the below screenshot to see the video*
+[![Faceted Search Page](./resources/faceted-search-page.jpg)](https://youtu.be/o2CBC0jro74)
 
 [^ back](#steps)
