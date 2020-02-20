@@ -24,10 +24,10 @@ for free for life as long as you use them.
 5. [Run Application for the First Time](#5-run-application-for-the-first-time-1-min) 
 6. [Calendar Page](#6-calendar-page-1-min)
 7. [Dashboard](#7-dashboard-6-min)
-  7.1. [Chart Genres](#Chart-Genres-1-min)
-  7.2. [Chart Runtime](#Chart-Runtime-1-min)
-  7.3. [Chart ROI](#Chart-ROI-2-min)
-  7.4. [Chart Major Producers](#Chart-Major-Producers)
+	- [Chart Genres](#71-chart-genres-1-min)
+	- [Chart Runtime](#72-chart-runtime-1-min)
+	- [Chart ROI](#73-chart-roi-2-min)
+	- [Chart Major Producers](#74-chart-major-producers)
 
 ### 1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
@@ -35,12 +35,15 @@ Create your autonomous database in your cloud account. The interface is very int
 *Control click the below screenshot to see the video*
 [![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
+[^ back](#steps)
+
 ### 2. Create Apex Workspace (40 sec)
 Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
 
 *Control click the below screenshot to see the video*
 [![Create Apex Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
 
+[^ back](#steps)
 
 ### 3. Load CSV File (1 min)
 Logout from *Administration Services* and login using *Workspace Sign-In*
@@ -49,6 +52,8 @@ Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv
 
 *Control click the below screenshot to see the video*
 [![Create Apex Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
+
+[^ back](#steps)
 
 ### 4. Create Application (1 min)
 After loading csv file data into **movies** table, create application. Apex analyzes data and suggests you the best possible page options you may want to create. In this example we will have
@@ -72,6 +77,8 @@ Most of the work will be done by automatically by Apex. We will interfere very l
  
 *Control click the below screenshot to see the video*
 [![Create Application](./resources/create-application.jpg)](https://youtu.be/q2Fm9OvrQEs)
+
+[^ back](#steps)
  
 ### 5. Run Application for the First Time (1 min)
 Now lets run the application for the first time and see what Apex has done for us. 
@@ -83,6 +90,8 @@ Now lets run the application for the first time and see what Apex has done for u
  
 *Control click the below screenshot to see the video*
 [![Run Application First Time](./resources/run-application-first-time.jpg)](https://youtu.be/Smrt0Qtnadc)
+
+[^ back](#steps)
  
 ### 6. Calendar Page (1 min)
 Lets start with an easy fix, current calendar page doesn't display movie titles. 
@@ -97,6 +106,8 @@ Display Column: TITLE
 
 *Control click the below screenshot to see the video*
 [![Edit Calendar Page](./resources/calendar-page.jpg)](https://youtu.be/WpJa9wHkcF4)
+
+[^ back](#steps)
 
 ### 7. Dashboard (6 min)
 Apex suggested a good start for our dashboard, we will improve the page for finding answers to the following questions.
@@ -131,6 +142,8 @@ Region.Series.[0].Label.Display As: Label
 *Control click the below screenshot to see the video*
 [![Chart Genres](./resources/edit-dashboard-genres.jpg)](https://youtu.be/WpJa9wHkcF4)
 
+[^ back](#steps)
+
 #### 7.2. Chart Runtime (1 min)
  - Use this sql for series data source
 ```sql
@@ -153,6 +166,8 @@ Region.Axes.x.Title: Minutes
 
 *Control click the below screenshot to see the video*
 [![Chart Runtime](./resources/edit-dashboard-runtime.jpg)](https://youtu.be/rRWLwI6fLl8)
+
+[^ back](#steps)
 
 #### 7.3. Chart ROI (2 min)
  - This chart is going to be a little complicated. We want to see how much is spend on each genre and how it is paying off. 
@@ -192,6 +207,8 @@ Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
 *Control click the below screenshot to see the video*
 [![Chart ROI](./resources/edit-dashboard-roi.jpg)](https://youtu.be/qdY-XIH6y04)
 
+[^ back](#steps)
+
 #### 7.4. Chart Major Producers (2 min)
  - In this chart we are going to display 4 different information and relationhips, so we are using a bubble chart.
  - Use this query for series data source
@@ -221,3 +238,5 @@ Region.Axes.y.Title: Budget
 
 *Control click the below screenshot to see the video*
 [![Chart Producers](./resources/edit-dashboard-producers.jpg.jpg)](https://youtu.be/_lEY1nDCRq8)
+
+[^ back](#steps)
