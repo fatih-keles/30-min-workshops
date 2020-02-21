@@ -332,3 +332,12 @@ Search.Facets.P8_SEARCH.Settings.External Page Item: P8_SEARCH_PRODUCTION_COMPAN
 [![Faceted Search Page](./resources/faceted-search-page.jpg)](https://youtu.be/o2CBC0jro74)
 
 [^ back](#steps)
+
+## Getting Beyond This Workshop
+1. Subscribe to Oracle Cloud with [Oracle Free Tier](https://www.oracle.com/cloud/free/ "Oracle Free Tier") offer and keep it!
+2. Quick start Apex with [Oracle Apex](https://apex.oracle.com/en/learn/getting-started/ "Oracle Apex") website
+3. Check Oracle Application Express [YouTube Channel](https://www.youtube.com/channel/UCEpIXFjcQIztReQNLymvYrQ)
+4. Follow [Oracle Apex Blog](https://blogs.oracle.com/apex/) for news, tips and tricks
+5. Don't forget to check out sample applications!
+6. Use Oracle's [training material](http://apex.oracle.com/pls/apex/f?p=44785:2:0:FORCE_QUERY::2:P2_GROUP_ID,P2_PRODUCT_ID,P2_TAGS:1000,2039 "Learning Library") to learn
+7. Practice to master your development skills!
