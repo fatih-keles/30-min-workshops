@@ -4,8 +4,8 @@
 ## Purpose
 You will develop a web application with a dashboard, calendar and faceted search page in 30 minutes. 
 
-The original demonstration belongs to my colleague Shakeeb Rahman and you can watch it [here](https://youtu.be/VlYa5xkF_kE "Low Code App Dev with Oracle APEX: Building a Simple Movie App") on 
-Oracle Application Express youtube [channel](https://www.youtube.com/channel/UCEpIXFjcQIztReQNLymvYrQ).
+The original demonstration belongs to my colleague [Shakeeb Rahman](https://www.linkedin.com/in/shakeebrahman/) and you can watch it on [YouTube](https://youtu.be/VlYa5xkF_kE "Low Code App Dev with Oracle APEX: Building a Simple Movie App") (which is really impressive) and 
+find more on **Oracle Application Express** [YouTube Channel](https://www.youtube.com/channel/UCEpIXFjcQIztReQNLymvYrQ).
 
 ## Prerequsites
 1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). 
