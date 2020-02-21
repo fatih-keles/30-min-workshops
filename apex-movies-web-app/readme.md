@@ -287,7 +287,8 @@ We modified faceted search page to display cards. This page will be most appeali
  -  *POSTER_PATH* column to page source query. Follow *Content Body.Movies.Source.SQL Query* path on page components. You will be able to see new column. Also check if you already have *TITLE*
  - Edit *CARD_TEXT* to display the movie poster.
 ```
-Content Body.Movies.Columns.CARD_TEXT.Column Formatting.HTML Expression: &lt;img src="https://image.tmdb.org/t/p/w500/#POSTER_PATH#" alt="#TITLE# Poster" style="max-width: 100%"/&gt;
+Content Body.Movies.Columns.CARD_TEXT.Column Formatting.HTML Expression: 
+<img src="https://image.tmdb.org/t/p/w500/#POSTER_PATH#" alt="#TITLE# Poster" style="max-width: 100%"/>
 ```
  - Follow *Content Body.Movies.Source.SQL Query* path on page components and replace *null CARD_LINK,* with the following piece of SQL query.
 ```sql
@@ -340,4 +341,6 @@ Search.Facets.P8_SEARCH.Settings.External Page Item: P8_SEARCH_PRODUCTION_COMPAN
 4. Follow [Oracle Apex Blog](https://blogs.oracle.com/apex/) for news, tips and tricks
 5. Don't forget to check out sample applications!
 6. Use Oracle's [training material](http://apex.oracle.com/pls/apex/f?p=44785:2:0:FORCE_QUERY::2:P2_GROUP_ID,P2_PRODUCT_ID,P2_TAGS:1000,2039 "Learning Library") to learn
-7. Practice to master your development skills!
+7. Practise, practise, practise to master your development skills!
+
+[^ back](#steps)
