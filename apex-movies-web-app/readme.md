@@ -1,4 +1,4 @@
-# 30 Minutes Workshop: Develop a Movie Application with Apex
+# 30 Minutes Workshop: Develop a Movie Application with APEX
 ![Save Time](./resources/save-time-1.jpg)
 
 ## Purpose
@@ -19,7 +19,7 @@ for free for life as long as you use them.
 
 ## Steps
 1. [Create Autonoumous Database](#1-create-autonoumous-database-2-min)
-2. [Create Apex Workspace](#2-create-Apex-Workspace-40-sec)
+2. [Create APEX Workspace](#2-create-apex-workspace-40-sec)
 3. [Load CSV File](#3-load-csv-file-1-min) 
 4. [Create Application](#4-create-application-1-min) 
 5. [Run Application for the First Time](#5-run-application-for-the-first-time-1-min) 
@@ -40,11 +40,11 @@ Create your autonomous database in your cloud account. The interface is very int
 
 [^ back](#steps)
 
-##  2. Create Apex Workspace (40 sec)
-Login with **ADMIN** user and create an Apex workspace. By doing this you will also be creating a database schema. 
+##  2. Create APEX Workspace (40 sec)
+Login with **ADMIN** user and create an APEX workspace. By doing this you will also be creating a database schema. 
 
 *Control click the below screenshot to see the video*
-[![Create Apex Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
+[![Create APEX Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
 
 [^ back](#steps)
 
@@ -54,19 +54,19 @@ Logout from *Administration Services* and login using *Workspace Sign-In*
 Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv "CSV file")
 
 *Control click the below screenshot to see the video*
-[![Create Apex Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
 
 ##  4. Create Application (1 min)
-After loading csv file data into **movies** table, create application. Apex analyzes data and suggests you the best possible page options you may want to create. In this example we will have
+After loading csv file data into **movies** table, create application. APEX analyzes data and suggests you the best possible page options you may want to create. In this example we will have
  - Home Page (Blank)
- - Dashboard Page (With charts offered by Apex)
- - Movies Search (A faceted search page new in Apex 19.2)
+ - Dashboard Page (With charts offered by APEX)
+ - Movies Search (A faceted search page new in APEX 19.2)
  - Movies Report (A tabular report page which we will turn into fancy cards)
  
-Most of the work will be done by automatically by Apex. We will interfere very little. 
- - First inspect **Dashboard** page by clicking **Edit** and see what charts are suggested by Apex by just looking at your data and learning about it. We are going to change suggested charts with the ones that display our information of interest. 
+Most of the work will be done by automatically by APEX. We will interfere very little. 
+ - First inspect **Dashboard** page by clicking **Edit** and see what charts are suggested by APEX by just looking at your data and learning about it. We are going to change suggested charts with the ones that display our information of interest. 
  - Then edit the **Faceted Search Page**, change page type from reports to cards. Set the following 
  ```
  Card Title: Title
@@ -84,9 +84,9 @@ Most of the work will be done by automatically by Apex. We will interfere very l
 [^ back](#steps)
  
 ##  5. Run Application for the First Time (1 min)
-Now lets run the application for the first time and see what Apex has done for us. 
+Now lets run the application for the first time and see what APEX has done for us. 
  - Login to application with **DEMO** user
- - Navigate to **Dashboard** and inspect the charts suggested by Apex.
+ - Navigate to **Dashboard** and inspect the charts suggested by APEX.
  - Navigate to **Movies Search** page and see the faceted search and card tiles.
  - See **Movies Report** page, which looks like a regualar tabular report page.
  - Inspect **Calendar** page see how the movies are placed on calendar according to release date.
@@ -113,7 +113,7 @@ Display Column: TITLE
 [^ back](#steps)
 
 ##  7. Dashboard (6 min)
-Apex suggested a good start for our dashboard, we will improve the page for finding answers to the following questions.
+APEX suggested a good start for our dashboard, we will improve the page for finding answers to the following questions.
  1. What are the most popular genres?
  2. What is the average movie length?
  3. Which type of movies has a better return on investment?
@@ -125,13 +125,10 @@ Use the application builder and edit dashboard with page designer.
 We want to see which genre is most popular by comparing number of movies with a nice pie chart. 
   - Use this sql for series data source
 ```sql
-select GENRE, count(*) value
-from MOVIES
-where 1=1
-and genre is not null
-and genre != '"'
-group by GENRE
-order by 2 desc
+SELECT genre, count(*) value
+  FROM movies
+ GROUP BY genre
+ ORDER BY 2 DESC
 ```
  - Make these changes on the first chart
 ```
@@ -152,12 +149,10 @@ Region.Series.[0].Label.Display As: Label
 We want to show all records at once and runtime is a good candidate for this. We will see a bell shaped normal distribution that should be noticed.
  - Use this sql for series data source
 ```sql
-select runtime, count(*) value
-from MOVIES
-where 1=1
-and runtime != 0
-group by runtime
-order by 1 asc
+SELECT runtime, count(*) value
+  FROM movies
+ GROUP BY runtime
+ ORDER BY 1 ASC
 ```
  - Make these changes on the second chart
 ```
@@ -184,14 +179,11 @@ Region.Attributes.Tooltip.Show Group Name: False
 ```
  - Use the following sql for each series (Alternatively you can also copy and paste the series then change it).
 ```sql 
-select genre, avg(budget) avg_budget, avg(revenue) avg_revenue, trunc(sum(revenue)/sum(budget)*100, 2) avg_return
-from MOVIES
-where 1=1
-and genre is not null
-and genre != '"'
-and nvl(budget,0) > 0 
-group by genre
-order by 4 asc
+SELECT genre, AVG(budget) avg_budget, AVG(revenue) avg_revenue, TRUNC(SUM(revenue)/SUM(budget)*100, 2) avg_return
+  FROM movies
+ WHERE NVL(budget,0) > 0 
+ GROUP BY genre
+ ORDER BY 4 ASC
 ```
  - Add Budget and Revenue Series 
 ```
@@ -218,13 +210,10 @@ Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
 In this chart we are going to display 4 different information and relationhips, so we are using a bubble chart.
  - Use this query for series data source
 ```sql
-select production_company, sum(budget) budget, sum(revenue) revenue, count(*) ctr
-from MOVIES
-where 1=1
-and production_company is not null
-and production_company != '"'
-group by production_company
-order by 2 desc
+SELECT production_company, SUM(budget) budget, SUM(revenue) revenue, COUNT(*) ctr
+ FROM MOVIES
+GROUP BY production_company
+ORDER BY 2 DESC
 ```
  - Use the following settings
 ```
@@ -247,7 +236,7 @@ Region.Axes.y.Title: Budget
 [^ back](#steps)
 
 ## 8. Report Page (5 min)
-This is pretty much looks like a tabular report page. Whereas there is more provided by Apex behind it. 
+This is pretty much looks like a tabular report page. Whereas there is more provided by APEX behind it. 
  - First simplfy the report by selecting the display columns and **Save** it.
 ```
 Display in Report
@@ -336,9 +325,9 @@ Search.Facets.P8_SEARCH.Settings.External Page Item: P8_SEARCH_PRODUCTION_COMPAN
 
 ## Getting Beyond This Workshop
 1. Subscribe to Oracle Cloud with [Oracle Free Tier](https://www.oracle.com/cloud/free/ "Oracle Free Tier") offer and keep it!
-2. Quick start Apex with [Oracle Apex](https://apex.oracle.com/en/learn/getting-started/ "Oracle Apex") website
+2. Quick start APEX with [Oracle APEX](https://apex.oracle.com/en/learn/getting-started/ "Oracle APEX") website
 3. Check Oracle Application Express [YouTube Channel](https://www.youtube.com/channel/UCEpIXFjcQIztReQNLymvYrQ)
-4. Follow [Oracle Apex Blog](https://blogs.oracle.com/apex/) for news, tips and tricks
+4. Follow [Oracle APEX Blog](https://blogs.oracle.com/apex/) for news, tips and tricks
 5. Don't forget to check out sample applications!
 6. Use Oracle's [training material](http://apex.oracle.com/pls/apex/f?p=44785:2:0:FORCE_QUERY::2:P2_GROUP_ID,P2_PRODUCT_ID,P2_TAGS:1000,2039 "Learning Library") to learn
 7. Practise, practise, practise to master your development skills!
