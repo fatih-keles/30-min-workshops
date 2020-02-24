@@ -195,8 +195,8 @@ Region.Series.[Budget|Revenue].Column Mapping.Label: AVG_BUDGET|AVG_REVENUE
  - Add ROI Series and set **Assigned To Y2 Axis** to true
 ```
 Region.Series.[ROI].Identification.Name: ROI
-Region.Series.[ROI]].Identification.Type: Line 
-Region.Series.[ROI]].Column Mapping.Label: GENRE
+Region.Series.[ROI].Identification.Type: Line 
+Region.Series.[ROI].Column Mapping.Label: GENRE
 Region.Series.[ROI].Column Mapping.Label: AVG_RETURN
 Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
 ```
@@ -211,9 +211,9 @@ In this chart we are going to display 4 different information and relationhips, 
  - Use this query for series data source
 ```sql
 SELECT production_company, SUM(budget) budget, SUM(revenue) revenue, COUNT(*) ctr
- FROM MOVIES
-GROUP BY production_company
-ORDER BY 2 DESC
+  FROM MOVIES
+ GROUP BY production_company
+ ORDER BY 2 DESC
 ```
  - Use the following settings
 ```
