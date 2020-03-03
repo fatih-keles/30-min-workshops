@@ -1,5 +1,5 @@
 # 30 Minutes Workshop: Develop a Movie Application with APEX
-*Control click the below screenshot to see the video on* [![youtube](./resources/yt_logo_rgb_light_100.jpg)]
+*Control click the below screenshot to see the video on* ![youtube](./resources/yt_logo_rgb_light_100.jpg)
 [![Watch all parts](./resources/banner-all-at-once.gif)](https://youtu.be/XRMmDQ28piw)
 
 ## Purpose
