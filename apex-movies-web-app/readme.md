@@ -1,6 +1,6 @@
 # 30 Minutes Workshop: Develop a Movie Application with APEX
-*Control click the below screenshot to see the video*
-[![Create APEX Workspace](./resources/banner-all-at-once.gif)](https://youtu.be/XRMmDQ28piw)
+*Control click the below screenshot to see the video on* [![youtube](./resources/yt_logo_rgb_light_100.jpg)]
+[![Watch all parts](./resources/banner-all-at-once.gif)](https://youtu.be/XRMmDQ28piw)
 
 ## Purpose
 You will develop a web application with a dashboard, calendar and faceted search page in 30 minutes. 

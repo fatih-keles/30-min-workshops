@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "be7a2129-dfa8-4da5-8f06-cc774298e465",
+		"name": "Set-4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get /departments/.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /departments/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/211867318381581117365626500103793167927",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						"211867318381581117365626500103793167927"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post /departments/.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"EMEA Human Resources\",\n    \"location\": \"Bucharest\",\n    \"country\": \"Romania\"\n}"
+				},
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post /departments/batchload?batchRows=500",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/csv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"ID\",\"NAME\",\"LOCATION\",\"COUNTRY\"\n,\"Germany Human Resources\",\"Bucharest\",\"Romania\"\n,\"OD SE Hub\", \"Bucharest\", \"Romania\"\n,\"ISV Team and Alliances\", \"Bucharest\", \"Romania\"\n,\"Presales EECIS\", \"Bucharest\", \"Romania\"\n\"211867318381578699513987270845443755575\",\"Office of the CEO\",\"Tanquecitos\",\"United States\"\n\"211867318381579908439806885474618461751\",\"South American Sales\",\"Sugarloaf\",\"United States\"\n\"211867318381581117365626500103793167927\",\"Shipping and Receiving\",\"Dale City\",\"United States\"\n\"211867318381582326291446114732967874103\",\"Tax Compliance\",\"Grosvenor\",\"United States\""
+				},
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/batchload?batchRows=500",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						"batchload"
+					],
+					"query": [
+						{
+							"key": "batchRows",
+							"value": "500"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query /departments/?q={}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/?q={\"country\": {\"$and\": [{\"$like\":\"Romania\"}, {\"name\":{\"$like\":\"%Germany%\"}}]} }",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"country\": {\"$and\": [{\"$like\":\"Romania\"}, {\"name\":{\"$like\":\"%Germany%\"}}]} }",
+							"description": "country = Romania and name like %Germany%"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put /departments/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Presales EECIS & Turkey\",\n    \"location\": \"Bucharest\",\n    \"country\": \"Romania\"\n}"
+				},
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/211878195675257090895856905900750702024",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						"211878195675257090895856905900750702024"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete /departments/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/211883008030224255027608363067270414285",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						"211883008030224255027608363067270414285"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete /departments/.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{service_endpoint\n}}/departments/?q={\"id\":{\"$gt\":0}}",
+					"host": [
+						"{{service_endpoint\n}}"
+					],
+					"path": [
+						"departments",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"country\": {\"$like\":\"Romania\"}}",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "{\"id\":{\"$gt\":0}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
