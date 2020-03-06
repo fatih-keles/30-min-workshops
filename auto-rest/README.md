@@ -37,7 +37,7 @@ curl url  | jq
 8. [Report Page](#8-report-page-5-min)
 9. [Faceted Search Page](#9-faceted-search-page-8-min)
 
-##  1. Create Autonoumous Database (2 min)
+## 1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
 *Control click the below screenshot to see the video*
@@ -45,7 +45,7 @@ Create your autonomous database in your cloud account. The interface is very int
 
 [^ back](#steps)
 
-##  2. Create APEX Workspace (40 sec)
+## 2. Create APEX Workspace (40 sec)
 Login with **ADMIN** user and create an APEX workspace. By doing this you will also be creating a database schema. 
 
 *Control click the below screenshot to see the video*
@@ -53,7 +53,7 @@ Login with **ADMIN** user and create an APEX workspace. By doing this you will a
 
 [^ back](#steps)
 
-##  3. Create Your Tables (1 min)
+## 3. Create Your Tables (1 min)
 Logout from *Administration Services* and login using *Workspace Sign-In*
 
 Login with **DEMO** user and create your data structure. For ease of use I will use *Sql Workshop > Utilities > Quick SQL* tool. Check out *Settings* for all capabilities, this is really a productivity tool that you can create *PL/SQL API* or add *Audit Columns* and have *History*. 
@@ -81,12 +81,12 @@ view emp_v departments employees
 
 [^ back](#steps)
 
-##  4. Register Schema with ORDS (1 min)
+## 4. Register Schema with ORDS (1 min)
 Navigate to *Sql Workshop > RESTful Services* and *Register Schema with ORDS*. We don't want to *Install Sample Service* for simplicty and set *Authorization Required for Metadata Access* to false so that services can be discovered. We will enable security on each service.
 
 [^ back](#steps)
 
-##  5. Enable REST on Tables (1 min)
+## 5. Enable REST on Tables (1 min)
 Navigate to *Sql Workshop > Object Browser* and click *DEPARTMENTS* on the left pane. Under *REST* tab enable *Rest Enable Object* , disable *Authorization Required* option for the moment and save the changes. After  enabling and saving you will see *RESTful URI*, copy the URL. 
 
 There will be two types of services published, one will be the metadata service, other is the actual service. The URL for services should be in the following form:
@@ -113,7 +113,7 @@ SELECT * FROM user_ords_enabled_objects
 
 [^ back](#steps)
 
-## 6. Prepare for Test
+## 6. Register Your Test Client
 Since we have the tables, sample data, rest services for CRUD operations and security in place, now it is time we test our services. First we must register a client then grant roles to the client.
 
 Navigate to *SQL Workshop>SQL Commands*, using the editor execute the following script to register a client. You can find list of *Privileges* under *SQL Workshop>RESTful Services* menu.
@@ -169,37 +169,44 @@ SELECT *
 You will see 7 methods are available.
 |Method|Description|Sample|
 |------|-----------|------|
-|Delete /:id| Delete with id|```sql DELETE FROM x WHERE id = :id```
-|Delete /.| Bulk delete|
-|Get /.| Bulk select|
-|Get /:id| Select with id|
-|Post /.| Insert|
-|Post /batchload| Bulk insert|
-|Put /:id| Update with id|
+|Delete /:id| Delete with id|```DELETE FROM t WHERE id = :id```
+|Delete /.| Bulk delete|```DELETE FROM t WHERE country = 'United States'```
+|Get /.| Bulk select|```SELECT * FROM t WHERE name like '%Development%'```
+|Get /:id| Select with id|```SELECT * FROM t WHERE id = :id```
+|Post /.| Insert|```INSERT INTO t(c1,c2,...) VALUES(v1,v2,...)```
+|Post /batchload| Bulk insert|*Multiple inserts or Insert All statement*|
+|Put /:id| Update with id|```UPDATE t SET c1=v1,c2=v2,... WHERE id = :id```
 
-
-## 7.1 Discover Services with Metadata Service
-
-There is a metadata service for discovering service and objects. The URL should be ```https://{SERVER_URL}/ords/%SCHEMA_NAME%/metadata-catalog/``` for services and ```https://%SERVER_URL%/ords/%SCHEMA_NAME%/metadata-catalog/%OBJECT_NAME%/``` for the objects.
-
-Use following command to see what services are provided.
-```console
-curl --request GET https://%SERVER_URL%/ords/demo/metadata-catalog/ | jq
-```
-
-Use metadata services you obtained from the previus call for getting object details.
-```
-curl --request GET https://%SERVER_URL%/ords/demo/metadata-catalog/departments/ | jq
-```
-
-
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
 
-## 7. Test Services 
-It is time to test our services. I am using *Postman* or *curl*. You can download [Postman Collection](./resources/Set-4.postman_collection.json "Postman Collection") and edit/create your environment to set *service_endpoint* variable. The collection is parametrized with this variable. If you need more help see [Postman Help](https://learning.postman.com/docs/postman/variables-and-environments/variables/)
+## 7.1 Discover Services with Metadata Service
+If you recall at [Step 4](#4-register-schema-with-ords-1-min) while enabling Auto REST on schema we let the metadata servise to be accessible without authentication so that web service consumers can 
 
-Set **SERVER_URL** environment variable for running *curl* commands.
+Use the following URL ```https://{SERVER_URL}/ords/{SCHEMA_NAME}/metadata-catalog/``` format and paste it in your browser. You will be able to discover departments service, but you will not be able to use it without proper authentication.
+[![Discover Services With Metadata Service](./resources/discover-with-metadata-services.png)](#)
+
+
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
+
+[^ back](#steps)
+
+## 8. Test Services 
+It is time to test our services. 
+ - Launch  Postman application 
+ - Create a new collection and name it *Auto Rest*
+ - Create a new environment 
+   - Name it *DEV*
+   - Add a new variable *url* and set the value with *{SERVER_URL}/ords/{SCHEMA_NAME}*
+ - Add the following requests to your collection
+      |Method|GET|
+	  |------|---|
+	  |URL|https://{{url}}/metadata-catalog/
+ 
+
 
 ## 7.1. GET departments
 
