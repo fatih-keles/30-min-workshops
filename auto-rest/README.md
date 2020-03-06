@@ -14,7 +14,7 @@ It is totaly free, takes less than two minutes. Credit card information is requi
   - 2 Virtual Machines 
 for free for life as long as you use them.
 
-2. Download [Postman](https://www.postman.com/downloads/ "Download Postman") or have [curl](https://curl.haxx.se/) on your environment. 
+2. Download [Postman](https://www.postman.com/downloads/ "Download Postman") or have [curl](https://curl.haxx.se/) on your environment. I am going to us Postman, it helps me keep things organized .
  - I generally have [GitHub Desktop](https://desktop.github.com/) and/or [Anaconda Python Distrubution](https://www.anaconda.com/distribution/)  on my environment, both of them bring curl support.
  - I also use Python json tools and/or [jq](https://stedolan.github.io/jq/) to format raw json output 
 ```console
@@ -102,14 +102,84 @@ Copy and paste the URL into your browser and see the list of departments.
 Now enable the *Authorization Required* option and see **401 Unauthorized** error page. 
 [![401 Unauthorized](./resources/list-departments-auth-failed.png)](#)
 
-ORDS uses OAuth 2.0 industry standard for authentication and authorization.
+ORDS uses OAuth 2.0 industry standard for authentication and authorization. You can see ORDS enabled schemas and objects with the following queries.
+```sql
+SELECT * FROM user_ords_schemas
+SELECT * FROM user_ords_enabled_objects
+```
 
 *Control click the below screenshot to see the video*
 [![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
 
-## 6. Discover Services 
+## 6. Prepare for Test
+Since we have the tables, sample data, rest services for CRUD operations and security in place, now it is time we test our services. First we must register a client then grant roles to the client.
+
+Navigate to *SQL Workshop>SQL Commands*, using the editor execute the following script to register a client. You can find list of *Privileges* under *SQL Workshop>RESTful Services* menu.
+```sql
+BEGIN 
+  oauth.create_client(
+      p_name => 'Postman Test User',
+      p_description => 'Postman Test User',
+      p_grant_type => 'client_credentials',
+      p_privilege_names => 'oracle.dbtools.autorest.privilege.DEMO.DEPARTMENTS',
+      p_support_email => 'my.email.address@oracle.com');
+  COMMIT;
+END;
+```
+
+After registering your client you will be able to see your records in the following internal APEX tables. 
+```sql
+SELECT * FROM user_ords_clients
+SELECT * FROM user_ords_client_privileges
+```
+
+At this point we need to authorize our client to access our service. Execute the following script for the purpose.
+```sql
+BEGIN
+  oauth.grant_client_role(p_client_name => 'Postman Test User',
+                          p_role_name   => 'oracle.dbtools.role.autorest.DEMO.DEPARTMENTS');
+  COMMIT;
+END;
+```
+
+After granting the role to your client you will be able to find your record in the following internal APEX table.
+```sql
+SELECT * FROM user_ords_client_roles
+```
+
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
+
+[^ back](#steps)
+
+## 7. Discover Services 
+So far we enabled the services and haven't seen them yet. Let's look at these two ways to discover the services.
+
+## 7.1 Discover Services with SQL
+I will start with the easy one. Execute the following query using *SQL Workshop>SQL Commands* to see what methods are available for *DEPARTMENTS* service and find out the signature of them.
+```sql
+SELECT *
+  FROM user_ords_services
+ WHERE name = 'DEPARTMENTS'
+```
+
+[![User ORDS Services](./resources/user-ords-services.png)](#)
+You will see 7 methods are available.
+|Method|Description|
+|------|-----------|
+|Delete /:id| Delete with id|
+|Delete /.| Bulk delete|
+|Get /.| Bulk select|
+|Get /:id| Select with id|
+|Post /.| Insert|
+|Post /batchload| Bulk insert|
+|Put /:id| Update with id|
+
+
+## 7.1 Discover Services with Metadata Service
+
 There is a metadata service for discovering service and objects. The URL should be ```https://{SERVER_URL}/ords/%SCHEMA_NAME%/metadata-catalog/``` for services and ```https://%SERVER_URL%/ords/%SCHEMA_NAME%/metadata-catalog/%OBJECT_NAME%/``` for the objects.
 
 Use following command to see what services are provided.
@@ -122,13 +192,7 @@ Use metadata services you obtained from the previus call for getting object deta
 curl --request GET https://%SERVER_URL%/ords/demo/metadata-catalog/departments/ | jq
 ```
 
-Now lets see what methods are available for *DEPARTMENTS* service.
-```sql
-SELECT *
-  FROM user_ords_services
- WHERE name = 'DEPARTMENTS'
-```
-You will see 2 GET, 2 POST, 1 PUT and 2 DELETE methods are available.
+
 
 [^ back](#steps)
 
