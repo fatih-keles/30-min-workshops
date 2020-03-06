@@ -2,9 +2,9 @@
 *Control click the below screenshot to see the video*
 
 ## Purpose
-You will see how you can publish *Rest Services* instantly as you create your tables using Auto Rest feature. 
+You will see how you can publish *Rest Services* instantly as you create your tables using Auto Rest feature with enterprise grade security. 
 
-This demonstration aims to show it is easy to integrate and connect your applications in modern day microservices environment. 
+This demonstration aims to show how easy to integrate and connect your applications in modern day microservices environment. With ORDS you can have productivity, security and simplicty at an enterprise level, and this can make your company agile .
 
 ## Prerequsites
 1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). 
@@ -56,7 +56,9 @@ Login with **ADMIN** user and create an APEX workspace. By doing this you will a
 ##  3. Create Your Tables (1 min)
 Logout from *Administration Services* and login using *Workspace Sign-In*
 
-Login with **DEMO** user and create your data structure. For ease of use I will use *Sql Workshop > Utilities > Quick SQL* tool. The below snippet generates SQL for us, tables, triggers, even generates sample data. *Save SQL Script* then *Review and Run*. 
+Login with **DEMO** user and create your data structure. For ease of use I will use *Sql Workshop > Utilities > Quick SQL* tool. Check out *Settings* for all capabilities, this is really a productivity tool that you can create *PL/SQL API* or add *Audit Columns* and have *History*. 
+
+The below snippet generates SQL for us, tables, triggers, it even generates some sample data so that we can test our application.
 ```
 departments /insert 4
    name /nn
@@ -71,7 +73,8 @@ departments /insert 4
 
 view emp_v departments employees
 ```
-
+*Save SQL Script* then *Review and Run*. 
+ 
 
 *Control click the below screenshot to see the video*
 [![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
@@ -79,22 +82,35 @@ view emp_v departments employees
 [^ back](#steps)
 
 ##  4. Register Schema with ORDS (1 min)
-Navigate to *Sql Workshop > RESTful Services* and *Register Schema with ORDS*. I didn't want to *Install Sample Service* and set *Authorization Required for Metadata Access* to false for the sake of simplicity.
+Navigate to *Sql Workshop > RESTful Services* and *Register Schema with ORDS*. We don't want to *Install Sample Service* for simplicty and set *Authorization Required for Metadata Access* to false so that services can be discovered. We will enable security on each service.
 
 [^ back](#steps)
 
-##  5. Enable REST on Objects (1 min)
-*Sql Workshop > Object Browser* and  under *REST* tab *Rest Enable Object*s that you just created. I disabled *Authorization Required* option for development purposes. Copy your *RESTful URI* for your objects. 
+##  5. Enable REST on Tables (1 min)
+Navigate to *Sql Workshop > Object Browser* and click *DEPARTMENTS* on the left pane. Under *REST* tab enable *Rest Enable Object* , disable *Authorization Required* option for the moment and save the changes. After  enabling and saving you will see *RESTful URI*, copy the URL. 
 
-The URL for services should be in the following form:
+There will be two types of services published, one will be the metadata service, other is the actual service. The URL for services should be in the following form:
 ```
-https://%SERVER_URL%/ords/%SCHEMA_NAME%/%OBJECT_NAME%/
+Metadata Service Catalog URL: https://{SERVER_URL}/ords/{SCHEMA_NAME}/metadata-catalog/
+Metadata Object Catalog URL: https://{SERVER_URL}/ords/{SCHEMA_NAME}/metadata-catalog/{OBJECT_NAME}
+Service URL: https://{SERVER_URL}/ords/{SCHEMA_NAME}/{OBJECT_NAME}/
 ```
+
+Copy and paste the URL into your browser and see the list of departments. 
+[![Departments Listed](./resources/list-departments-no-auth.png)](#)
+
+Now enable the *Authorization Required* option and see **401 Unauthorized** error page. 
+[![401 Unauthorized](./resources/list-departments-auth-failed.png)](#)
+
+ORDS uses OAuth 2.0 industry standard for authentication and authorization.
+
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
 
 ## 6. Discover Services 
-There is a metadata service for discovering service and objects. The URL should be ```https://%SERVER_URL%/ords/%SCHEMA_NAME%/metadata-catalog/``` for services and ```https://%SERVER_URL%/ords/%SCHEMA_NAME%/metadata-catalog/%OBJECT_NAME%/``` for the objects.
+There is a metadata service for discovering service and objects. The URL should be ```https://{SERVER_URL}/ords/%SCHEMA_NAME%/metadata-catalog/``` for services and ```https://%SERVER_URL%/ords/%SCHEMA_NAME%/metadata-catalog/%OBJECT_NAME%/``` for the objects.
 
 Use following command to see what services are provided.
 ```console
@@ -139,3 +155,12 @@ curl --location --request POST "https://%SERVER_URL%/ords/demo/departments/" --h
 ```
 
 [^ back](#steps)
+
+https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/oauth/token
+
+https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/departments/
+
+https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/ui/oauth2/clients/
+
+
+https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/ui/oauth2/clients/
