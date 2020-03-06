@@ -167,9 +167,9 @@ SELECT *
 
 [![User ORDS Services](./resources/user-ords-services.png)](#)
 You will see 7 methods are available.
-|Method|Description|
-|------|-----------|
-|Delete /:id| Delete with id|
+|Method|Description|Sample|
+|------|-----------|------|
+|Delete /:id| Delete with id|```sql DELETE FROM x WHERE id = :id```
 |Delete /.| Bulk delete|
 |Get /.| Bulk select|
 |Get /:id| Select with id|
