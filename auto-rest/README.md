@@ -182,56 +182,216 @@ You will see 7 methods are available.
 
 [^ back](#steps)
 
-## 7.1 Discover Services with Metadata Service
+## 7.2 Discover Services with Metadata Service
 If you recall at [Step 4](#4-register-schema-with-ords-1-min) while enabling Auto REST on schema we let the metadata servise to be accessible without authentication so that web service consumers can 
 
 Use the following URL ```https://{SERVER_URL}/ords/{SCHEMA_NAME}/metadata-catalog/``` format and paste it in your browser. You will be able to discover departments service, but you will not be able to use it without proper authentication.
 [![Discover Services With Metadata Service](./resources/discover-with-metadata-services.png)](#)
-
 
 *Control click the below screenshot to see the video*
 [![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
 
-## 8. Test Services 
+## 8. Test Authentication for Services
 It is time to test our services. 
  - Launch  Postman application 
  - Create a new collection and name it *Auto Rest*
  - Create a new environment 
-   - Name it *DEV*
-   - Add a new variable *url* and set the value with *{SERVER_URL}/ords/{SCHEMA_NAME}*
- - Add the following requests to your collection
-      |Method|GET|
-	  |------|---|
-	  |URL|https://{{url}}/metadata-catalog/
- 
+   + Name it *DEV*
+   + Add a new variable ```url``` and set the value with ```{SERVER_URL}/ords/{SCHEMA_NAME}```
+ - Add the following request to your collection, save.
+      |Name|Method|URL|
+	  |----|------|----|
+	  |Metadata Service|GET|https://{{url}}/metadata-catalog/|
+	  |Metadata Departments|GET|https://{{url}}/metadata-catalog/departments/|
+   + Run to see *Metadata Service* is accessible and *Metadata Departments* required authentication and throws *401 Unauthorized* error message.
+ - Now lets test OAuth service manually
+   + add the ```client_id``` and ```client_secret``` variables to *DEV* environment, find the values of the variables with the following sql. Go to *SQL Workshop>SQL Commands* to execute your query.
+   ```sql 
+   SELECT client_id, client_secret FROM user_ords_clients
+   ```
+   + add a new request to test OAuth services
+      ```
+	  Name: OAuth Service (Manual Test)
+	  Method: POST
+	  URL: https://{{url}}/oauth/token
+	  Authorization.Type: Basic Auth
+	  Authorization.Username: {{client_id}}
+	  Authorization.Password: {{client_secret}}
+	  Headers[0].Key: Content-Type
+	  Headers[0].Value: application/x-www-form-urlencoded
+	  Body: x-www-form-urlencoded
+	  Body[0].Key: grant_type
+	  Body[0].Value: client_credentials
+	  ```
+   + send the request and see the response json
+   ```json   {"access_token":"e4qd3QCM75wsKjyl9J0LVQ","token_type":"bearer","expires_in":3600}
+   ```
+ - Since we have a *access_token*, lets test Departments Metadata service with OAuth.
+   + add a new request to test departments metadata service, and see a list of columns of our departments table.
+      ```
+	  Name: Metadata Departments (Manual Test OAuth with Bearer Token)
+	  Method: GET
+	  URL: https://{{url}}/metadata-catalog/departments/
+	  Headers[0].Key: Authorization
+	  Headers[0].Value: Bearer <YOUR ACCESS TOKEN HERE>
+	  ```
+ - Another way to the is by Postman features of *Get New Access Token* and *Available Tokens*
+   + add a new request to test departments metadata service, and see a list of columns of our departments table.
+      ```
+	  Name: Metadata Departments (Manual Test OAuth with Available Tokens)
+	  Method: GET
+	  URL: https://{{url}}/metadata-catalog/departments/
+	  Authorization.Type: OAuth 2.0
+	  Authorization.Add authorization data to: Request Headers
+	  ```
+   + Click **Get New Access Token** button and fill in the following, request token and use it.
+      ```
+	  Token Name: OAuth2.0 Departments Token
+	  Grant Type: Client Credentials
+	  Access Token URL: https://{{url}}/oauth/token
+	  Client Id: {{client_id}}
+	  Client Secret: {{client_secret}}
+	  Client Authentication: Send as Basic Auth header
+	  ```
+   + Test the service and see the results.
 
-
-## 7.1. GET departments
-
-We can get a **list** of departments. Service has a builtin paging capability and guides you with *hasMore*, *limit*, *offset*, *count* attributes. It contains links to first, next/previous page as well as metadata service. You can explore the results.
-```console
-curl --location --request GET "https://%SERVER_URL%/ords/demo/departments/" | jq
-```
-
-Also you can run **queries** for searching your data with query string in the url and json formatted where clauses.
-
-For accessing one record you can pass **primary key** for the object as a **path variable**.
-
-## 7.1. POST departments
-There are two types of post operations that can be used for inserting records. First one is JSON object as raw body 
-```
-curl --location --request POST "https://%SERVER_URL%/ords/demo/departments/" --header "Content-Type: application/json" --data-raw "{'name': 'EMEA Human Resources', 'location': 'Bucharest', 'country': 'Romania'}"
-```
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
 
-https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/oauth/token
+## 9. Automate OAuth Authentication
+Obtaining OAuth token manually and using it in the header is a quick way to start. When we want to test services more intensive, it will be a burden. By adding a small piece of javascript code at collection level, we will speed things up. The script will check if there is a valid token, and use it. If not then will create one and store it.
+ - Add the following variables into your environment, they will be used by script.
+ ```
+ access_token_expiry
+ current_access_token
+ ```
+ - Click three dots menu on your collection and edit it.
+ - Set *Authorization* tab
+ ```
+ Type: OAuth 2.0
+ Add auth data to: Request Headers
+ Access Token: {{current_access_token}}
+ ```
+ - Add the following script in *Pre-request Scripts*
+ ```javascript
+console.log('Original script is from this gist: https://gist.github.com/bcnzer/073f0fc0b959928b0ca2b173230c0669');
 
-https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/departments/
+console.log('Get variables from active environment'); 
+var service_host = pm.environment.get("url");
+var client_id = pm.environment.get("client_id");
+var client_secret = pm.environment.get("client_secret");
+var basic_authentication_header = btoa(client_id + ':' + client_secret);
 
-https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/ui/oauth2/clients/
+console.log('Prepare post request with variables');
+var echoPostRequest = {
+    url: 'https://'+service_host+'/oauth/token',
+    method: 'POST',
+    header: {
+        //'Accept': '*/*',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic '+basic_authentication_header
+    },
+    body: {
+        mode: 'raw',
+        //raw: JSON.stringify({grant_type:'client_credentials'})
+        raw: 'grant_type=client_credentials'
+    }
+};
+
+console.log('Check if the previous token has expired');
+var getToken = true;
+
+if (!pm.environment.get('access_token_expiry') || 
+    !pm.environment.get('current_access_token')) {
+    console.log('Token or expiry date are missing');
+} else if (pm.environment.get('access_token_expiry') <= (new Date()).getTime()) {
+    console.log('Token is expired');
+} else {
+    getToken = false;
+    console.log('Token and expiry date are all good');
+}
 
 
-https://lpdmasisaukuwfd-db202003031438.adb.eu-frankfurt-1.oraclecloudapps.com/ords/demo/ui/oauth2/clients/
+console.log('GetToken:'+getToken);
+if (getToken === true) {
+    pm.sendRequest(echoPostRequest, function (err, res) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Saving the token and expiry date');
+            var responseJson = res.json();
+            pm.environment.set('current_access_token', responseJson.access_token);
+            console.log('Access Token is '+responseJson.access_token);
+    
+            var expiryDate = new Date();
+            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);
+            pm.environment.set('access_token_expiry', expiryDate.getTime());
+            console.log('Token is valid until '+expiryDate);
+        }
+    });
+}
+ ```
+ 
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
+
+[^ back](#steps)
+
+## 9. Work with Services 
+Download [Postman Collection](./resources/Set-4.postman_collection.json "Postman Collection") and explore the requests. 
+
+## 9.1. List Departments 
+We can get a **list** of departments. Service has a builtin paging capability and guides you with *hasMore*, *limit*, *offset*, *count* attributes. It contains links to first, next/previous page as well as metadata service. You can explore the results.
+
+## 9.2. Get One Specific Department 
+For accessing one record you can pass **primary key** for the object as a **path variable**.
+
+## 9.3. Insert a New Department 
+Use Post method and request body to add a new department.
+```json
+{
+    "name": "EMEA Human Resources",
+    "location": "Bucharest",
+    "country": "Romania"
+}
+```
+## 9.4. Insert New Departments in Batch
+Very useful and easy way to load data to table in batch. Use post method and CSV data in body.
+```csv
+"ID","NAME","LOCATION","COUNTRY"
+,"Germany Human Resources","Bucuresti","Romania"
+,"OD SE Team","Bucuresti","Romania"
+,"OD SE Hub","Bucuresti","Romania"
+,"ISV Team and Alliances","Bucuresti","Romania"
+,"Presales EECIS","Bucuresti","Romania"
+```
+## 9.5. Search Your Data
+Iterating the list is not the optimal way to find in rich data sets. You can run **queries** for searching your data with query string in the url and json formatted where clauses. Now lets search all the new departments recently added
+```
+Key: q
+Value: {"country": {"$and": [{"$like":"Romania"}, {"name":{"$like":"%%"}}]}}
+```
+## 9.5. Update a Department with Primary Key
+Using primary key as the path variable and request body we can update data.
+```json
+{
+    "name": "ISV Team and Alliances",
+    "location": "Bucharest",
+    "country": "Romania"
+}
+```
+## 9.5. Delete a Department with Primary Key
+Using primary key as the path variable and Delete method we can delete the record.
+
+## 9.6. Delete Departments in Bulk
+Using the query string and delete method we can delete multiple records at once.
+
+*Control click the below screenshot to see the video*
+[![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
+
+[^ back](#steps)
+
