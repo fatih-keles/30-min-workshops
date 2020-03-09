@@ -9,9 +9,7 @@ The original demonstration belongs to my colleague [Shakeeb Rahman](https://www.
 find more on **Oracle Application Express** [YouTube Channel](https://www.youtube.com/channel/UCEpIXFjcQIztReQNLymvYrQ).
 
 ## Prerequsites
-1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). 
-
-It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
+1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
   * 2 Oracle Autonomous Databases
   * 2 Virtual Machines 
 for free for life as long as you use them.
