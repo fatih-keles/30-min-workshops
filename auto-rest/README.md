@@ -39,7 +39,7 @@ This demonstration aims to show how easy to integrate and connect your applicati
 ## 1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
-*Control click the below screenshot to see the video*
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
 [^ back](#steps)
@@ -47,7 +47,7 @@ Create your autonomous database in your cloud account. The interface is very int
 ## 2. Create APEX Workspace (40 sec)
 Login with **ADMIN** user and create an APEX workspace. By doing this you will also be creating a database schema. 
 
-*Control click the below screenshot to see the video*
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Create APEX Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
 
 [^ back](#steps)
