@@ -1,18 +1,19 @@
 # 30 Minutes Workshop: Use Rest Services Instantly
-*Control click the below screenshot to see the video*
+*Control click the below screenshot to watch the entire demo video on* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/> *You will find videos which display only the related parts for each section below*
+[![Watch all parts](./resources/banner-all-at-once.gif)](https://youtu.be/XRMmDQ28piw)
 
 ## Purpose
-You will see how you can publish *Rest Services* instantly as you create your tables using Auto Rest feature with enterprise grade security. 
+You will see how you can **instantly publish Secure Rest Services** using **Auto Rest** feature with enterprise grade security. 
 
-This demonstration aims to show how easy to integrate and connect your applications in modern day microservices environment. With ORDS you can have productivity, security and simplicty at an enterprise level, and this can make your company agile .
+This demonstration aims to show how easy to integrate and connect your applications in modern day microservices environment. With ORDS you can achieve productivity, security and simplicty for your enterprise, become agile and more responsive to business needs.
 
 ## Prerequsites
 1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). 
 
-It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
+  It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
   - 2 Oracle Autonomous Databases
   - 2 Virtual Machines 
-for free for life as long as you use them.
+  for free for life as long as you use them.
 
 2. Download [Postman](https://www.postman.com/downloads/ "Download Postman") or have [curl](https://curl.haxx.se/) on your environment. I am going to us Postman, it helps me keep things organized .
  - I generally have [GitHub Desktop](https://desktop.github.com/) and/or [Anaconda Python Distrubution](https://www.anaconda.com/distribution/)  on my environment, both of them bring curl support.

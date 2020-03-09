@@ -1,5 +1,5 @@
 # 30 Minutes Workshop: Develop a Movie Application with APEX
-*Control click the below screenshot to watch the entire demo video on* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/> *You can also watch smaller pieces of videos which display only the related parts within each section*
+*Control click the below screenshot to watch the entire demo video on* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/> *You will find videos which display only the related parts for each section below*
 [![Watch all parts](./resources/banner-all-at-once.gif)](https://youtu.be/XRMmDQ28piw)
 
 ## Purpose
