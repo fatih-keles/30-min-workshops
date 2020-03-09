@@ -163,7 +163,7 @@ Region.Series.[0].Performance.Maximum Rows to Process: Null
 Region.Axes.x.Title: Minutes
 ```
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Chart Runtime](./resources/edit-dashboard-runtime.jpg)](https://youtu.be/rRWLwI6fLl8)
 
 [^ back](#steps)
