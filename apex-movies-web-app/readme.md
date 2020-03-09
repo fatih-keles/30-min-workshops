@@ -34,7 +34,7 @@ for free for life as long as you use them.
 ##  1. Create Autonoumous Database (2 min)
 Create your autonomous database in your cloud account. The interface is very intuitive. Follow screen instructions. If you need help press help button on the very same screen.
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Create Autonoumous Database](./resources/create-autonomous-database.jpg)](https://youtu.be/_cdAjzawbU0)
 
 [^ back](#steps)
@@ -42,7 +42,7 @@ Create your autonomous database in your cloud account. The interface is very int
 ##  2. Create APEX Workspace (40 sec)
 Login with **ADMIN** user and create an APEX workspace. By doing this you will also be creating a database schema. 
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Create APEX Workspace](./resources/create-apex-workspace.jpg)](https://youtu.be/wgCU4hkMtvw)
 
 [^ back](#steps)
@@ -52,7 +52,7 @@ Logout from *Administration Services* and login using *Workspace Sign-In*
 
 Login with **DEMO** user and load [CSV file](./resources/tmdb-movies_smaller.csv "CSV file")
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Create APEX Workspace](./resources/load-csv-file.jpg)](https://youtu.be/EwXDxuooNug)
 
 [^ back](#steps)
@@ -77,7 +77,7 @@ Most of the work will be done by automatically by APEX. We will interfere very l
  - Click **Check All** Features
  - Create application 
  
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Create Application](./resources/create-application.jpg)](https://youtu.be/q2Fm9OvrQEs)
 
 [^ back](#steps)
@@ -90,7 +90,7 @@ Now lets run the application for the first time and see what APEX has done for u
  - See **Movies Report** page, which looks like a regualar tabular report page.
  - Inspect **Calendar** page see how the movies are placed on calendar according to release date.
  
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Run Application First Time](./resources/run-application-first-time.jpg)](https://youtu.be/Smrt0Qtnadc)
 
 [^ back](#steps)
@@ -106,7 +106,7 @@ Display Column: TITLE
 ```
  - Save and run the page to see what changed
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Edit Calendar Page](./resources/calendar-page.jpg)](https://youtu.be/WpJa9wHkcF4)
 
 [^ back](#steps)
@@ -139,7 +139,7 @@ Region.Series.[0].Label.Show: Yes
 Region.Series.[0].Label.Display As: Label
 ```
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Chart Genres](./resources/edit-dashboard-genres.jpg)](https://youtu.be/WpJa9wHkcF4)
 
 [^ back](#steps)
@@ -200,7 +200,7 @@ Region.Series.[ROI].Column Mapping.Label: AVG_RETURN
 Region.Series.[ROI].Appearance.Assigned To Y2 Axis: True
 ```
  
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Chart ROI](./resources/edit-dashboard-roi.jpg)](https://youtu.be/qdY-XIH6y04)
 
 [^ back](#steps)
@@ -229,7 +229,7 @@ Region.Axes.x.Title: #Movies
 Region.Axes.y.Title: Budget
 ```
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Chart Producers](./resources/edit-dashboard-producers.jpg)](https://youtu.be/_lEY1nDCRq8)
 
 [^ back](#steps)
@@ -265,7 +265,7 @@ Count(*) Group by Genre
  - Explore **Download** menu
  - Explore **Subscribe** menu
 
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Report Page](./resources/report-page.jpg)](https://youtu.be/AHfihurkGKQ)
 
 [^ back](#steps)
@@ -317,7 +317,7 @@ Search.Facets.P8_SEARCH.Settings.External Page Item: P8_SEARCH_PRODUCTION_COMPAN
 ```
  - Delete Breadcrumb page title
  
-*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_100.jpg" width=60/>
+*Control click the below screenshot to see the video* <img src="./resources/yt_logo_rgb_light_64.png" width=60/>.
 [![Faceted Search Page](./resources/faceted-search-page.jpg)](https://youtu.be/o2CBC0jro74)
 
 [^ back](#steps)
