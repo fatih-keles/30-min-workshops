@@ -10,8 +10,8 @@ find more on **Oracle Application Express** [YouTube Channel](https://www.youtub
 
 ## Prerequsites
 1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
-  * 2 Oracle Autonomous Databases
-  * 2 Virtual Machines 
+   * 2 Oracle Autonomous Databases
+   * 2 Virtual Machines 
 for free for life as long as you use them.
 
 2. Download [this csv file](./resources/tmdb-movies_smaller.csv "CSV file") which I downloaded from [The Movie Database](www.themoviedb.org).
