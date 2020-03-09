@@ -8,20 +8,18 @@ You will see how you can **instantly publish Secure Rest Services** using **Auto
 This demonstration aims to show how easy to integrate and connect your applications in modern day microservices environment. With ORDS you can achieve productivity, security and simplicty for your enterprise, become agile and more responsive to business needs.
 
 ## Prerequsites
-1. Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). 
-
-  It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
-  - 2 Oracle Autonomous Databases
-  - 2 Virtual Machines 
+1.Create Free Oracle Cloud account, start [here](https://www.oracle.com/cloud/free/ "Oracle Free Tier"). It is totaly free, takes less than two minutes. Credit card information is required to verify your identity, no charges will be incurred. You will get
+  + 2 Oracle Autonomous Databases
+  + 2 Virtual Machines 
   for free for life as long as you use them.
 
-2. Download [Postman](https://www.postman.com/downloads/ "Download Postman") or have [curl](https://curl.haxx.se/) on your environment. I am going to us Postman, it helps me keep things organized .
- - I generally have [GitHub Desktop](https://desktop.github.com/) and/or [Anaconda Python Distrubution](https://www.anaconda.com/distribution/)  on my environment, both of them bring curl support.
- - I also use Python json tools and/or [jq](https://stedolan.github.io/jq/) to format raw json output 
-```console
-curl url  | python -mjson.tool
-curl url  | jq
-```
+2.Download [Postman](https://www.postman.com/downloads/ "Download Postman") or have [curl](https://curl.haxx.se/) on your environment. I am going to us Postman, it helps me keep things organized.
+  + I generally have [GitHub Desktop](https://desktop.github.com/) and/or [Anaconda Python Distrubution](https://www.anaconda.com/distribution/)  on my environment, both of them bring curl support.
+  + I sometimes use Python json tools and/or [jq](https://stedolan.github.io/jq/) to format raw json output 
+  ```console
+  curl url  | python -mjson.tool
+  curl url  | jq
+  ```
 
 ## Steps
 1. [Create Autonoumous Database](#1-create-autonoumous-database-2-min)
