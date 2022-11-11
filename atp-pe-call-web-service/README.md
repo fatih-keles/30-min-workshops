@@ -148,6 +148,8 @@ A few things worth mentioning from the [official documentation](https://docs.ora
 - Connections through IP addresses are not allowed. 
 - APEX instance is preconfigured with an Oracle Wallet that contains more than 90 of the most common trusted root and intermediate SSL certificates. The APEX_WEB_SERVICE package automatically takes advantage of this Oracle Wallet without additional configuration from application developers. 
 
+For working with Rest services check [here](https://docs.oracle.com/en/database/oracle/apex/22.1/aeapi/Invoking-a-RESTful-Style-Web-Service.html#GUID-E1CF6424-53BF-411A-8C54-67DCF754C737)
+
 ```sql
 DECLARE
   l_clob           clob;
