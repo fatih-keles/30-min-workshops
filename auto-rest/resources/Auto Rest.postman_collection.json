@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "75d55353-172b-43a3-8c22-e2f2f6a77bf9",
+		"name": "Auto Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Metadata Service",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/metadata-catalog/",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"metadata-catalog",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metadata Departments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/metadata-catalog/departments/",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"metadata-catalog",
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth Service (Manual Test)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "043ef904-b01c-47d9-b2da-90da7e902fca",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{client_id}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/oauth/token",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metadata Departments (Manual Test OAuth with Bearer Token)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer e4qd3QCM75wsKjyl9J0LVQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url}}/metadata-catalog/departments/?Authorization=Bearer IweSKBu0S0PnhDXZzOOb7w",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"metadata-catalog",
+						"departments",
+						""
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer IweSKBu0S0PnhDXZzOOb7w"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metadata Departments (Manual Test OAuth with Available Tokens)",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "ztT3mxBvnWhJDQhrvnZcfg",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/metadata-catalog/departments/",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"metadata-catalog",
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /departments/.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/departments/",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /departments/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/departments/212612953212316999993545947246651640464",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						"212612953212316999993545947246651640464"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post /departments/.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"EMEA Human Resources\",\n    \"location\": \"Bucharest\",\n    \"country\": \"Romania\"\n}"
+				},
+				"url": {
+					"raw": "https://{{url}}/departments/",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post /departments/batchload?batchRows=500",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/csv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"ID\",\"NAME\",\"LOCATION\",\"COUNTRY\"\n,\"Germany Human Resources\",\"Bucuresti\",\"Romania\"\n,\"OD SE Team\",\"Bucuresti\",\"Romania\"\n,\"OD SE Hub\",\"Bucuresti\",\"Romania\"\n,\"ISV Team and Alliances\",\"Bucuresti\",\"Romania\"\n,\"Presales EECIS\",\"Bucuresti\",\"Romania\""
+				},
+				"url": {
+					"raw": "https://{{url}}/departments/batchload?batchRows=500",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						"batchload"
+					],
+					"query": [
+						{
+							"key": "batchRows",
+							"value": "500"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query /departments/?q={}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{url}}/departments/?q={\"country\": {\"$and\": [{\"$like\":\"Romania\"}, {\"name\":{\"$like\":\"%%\"}}]}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"country\": {\"$and\": [{\"$like\":\"Romania\"}, {\"name\":{\"$like\":\"%%\"}}]}}",
+							"description": "country = Romania and name like %%"
+						},
+						{
+							"key": "q",
+							"value": "{\"country\":{\"$like\":\"%States\"}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put /departments/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ISV Team and Alliances\",\n    \"location\": \"Bucharest\",\n    \"country\": \"Romania\"\n}"
+				},
+				"url": {
+					"raw": "https://{{url}}/departments/213249682569117141133653179947849243111",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						"213249682569117141133653179947849243111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete /departments/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/departments/213249682569117141133653179947849243111",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						"213249682569117141133653179947849243111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete /departments/.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/departments/?q={\"country\": {\"$like\":\"Romania\"}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"departments",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"country\": {\"$like\":\"Romania\"}}"
+						},
+						{
+							"key": "q",
+							"value": "{\"id\":{\"$gt\":0}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessToken",
+				"value": "{{current_access_token}}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8dcd9072-f19b-4513-a4cf-18428a5f2bd4",
+				"type": "text/javascript",
+				"exec": [
+					"console.log('Original script is from this gist: https://gist.github.com/bcnzer/073f0fc0b959928b0ca2b173230c0669');",
+					"",
+					"console.log('Get variables from active environment'); ",
+					"var service_host = pm.environment.get(\"url\");",
+					"var client_id = pm.environment.get(\"client_id\");",
+					"var client_secret = pm.environment.get(\"client_secret\");",
+					"var basic_authentication_header = btoa(client_id + ':' + client_secret);",
+					"",
+					"console.log('Prepare post request with variables');",
+					"var echoPostRequest = {",
+					"    url: 'https://'+service_host+'/oauth/token',",
+					"    method: 'POST',",
+					"    header: {",
+					"        //'Accept': '*/*',",
+					"        'Content-Type': 'application/x-www-form-urlencoded',",
+					"        'Authorization': 'Basic '+basic_authentication_header",
+					"    },",
+					"    body: {",
+					"        mode: 'raw',",
+					"        //raw: JSON.stringify({grant_type:'client_credentials'})",
+					"        raw: 'grant_type=client_credentials'",
+					"    }",
+					"};",
+					"",
+					"console.log('Check if the previous token has expired');",
+					"var getToken = true;",
+					"",
+					"if (!pm.environment.get('access_token_expiry') || ",
+					"    !pm.environment.get('current_access_token')) {",
+					"    console.log('Token or expiry date are missing');",
+					"} else if (pm.environment.get('access_token_expiry') <= (new Date()).getTime()) {",
+					"    console.log('Token is expired');",
+					"} else {",
+					"    getToken = false;",
+					"    console.log('Token and expiry date are all good');",
+					"}",
+					"",
+					"",
+					"console.log('GetToken:'+getToken);",
+					"if (getToken === true) {",
+					"    pm.sendRequest(echoPostRequest, function (err, res) {",
+					"        if (err) {",
+					"            console.log(err);",
+					"        } else {",
+					"            console.log('Saving the token and expiry date');",
+					"            var responseJson = res.json();",
+					"            pm.environment.set('current_access_token', responseJson.access_token);",
+					"            console.log('Access Token is '+responseJson.access_token);",
+					"    ",
+					"            var expiryDate = new Date();",
+					"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+					"            pm.environment.set('access_token_expiry', expiryDate.getTime());",
+					"            console.log('Token is valid until '+expiryDate);",
+					"        }",
+					"    });",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e6a00459-9798-4102-a413-7a1a94c294c9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

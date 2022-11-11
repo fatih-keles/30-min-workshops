@@ -1,0 +1,49 @@
+https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/19.2/aelig/installing-REST-data-services.html#GUID-A16BCCA2-8081-4062-A635-9F7C36FC394F
+Oracle REST Data Services is a Java EE-based alternative for Oracle HTTP Server and mod_plsql. The Java EE implementation offers increased functionality including a command line based configuration, enhanced security, file caching, and RESTful web services. Oracle REST Data Services also provides increased flexibility by supporting deployments using Oracle WebLogic Server, Apache Tomcat, and a standalone mode.
+
+Note:Oracle REST Data Services was called Oracle Application Express Listener before Release 2.0.6. 
+
+The Oracle Application Express architecture requires some form of web server to proxy requests between a web browser and the Oracle Application Express engine. Oracle REST Data Services satisfies this need but its use goes beyond that of Oracle Application Express configurations. Oracle REST Data Services simplifies the deployment process because there is no Oracle home required, as connectivity is provided using an embedded JDBC driver.
+
+
+Future Direction for Application Express (APEX) and the Oracle HTTP Server (OHS) / Mod_plsql (Doc ID 1945619.1)
+Oracle REST Data Services (ORDS) is a free product provided under Oracle Technology Network License Terms. Running the standalone Java servlet (war file), provided in the distribution, is *not* supported in production environments until ORDS 3.0.6 and above. For version prior to 3.0.6, standalone is only intended for use in development and test environments.
+
+Oracle REST Data Services (formerly known as Oracle  APEX Listener)
+The free replacement for OHS / mod_plsql is Weblogic with ORDS. As long as WLS is installed on the database server, there is no additional licensing required. The Oracle® Fusion Middleware Licensing Information User Manual states the following:
+
+A license to WebLogic Management Framework includes a restricted-use license to Oracle WebLogic Server Standard Edition. Oracle WebLogic Server Standard Edition may be used solely for hosting the Java servlet that is used by Oracle REST Data Services. The Java servlet is the functional replacement for Oracle HTTP Server mod_plsql.
+https://www.oracle.com/tools/technologies/faq-rest-data-services.html
+
+http://www.thatjeffsmith.com/oracle-rest-data-services-ords/
+%70 APIs are REST
+
+Database API
+https://www.thatjeffsmith.com/archive/2019/05/data-pump-via-ords/
+
+
+https://www.thatjeffsmith.com/archive/2019/02/ords-architecture-a-common-deployment-overview/
+19.2/20.2 on july 8 2020
+Weblogic 12.2.1.3+
+Tomcat 8.5+
+
+authentication
+basic
+cookie based
+oauth2
+
+ref cursor data type supported, out parameters
+
+2011 apex based restful services
+2012 apex listener v2 standalone jetty
+2015 v3 no longer apex needed, soda, auto rest
+2017 v17 rest enabled SQL
+2018 v18 pl/sql gateway enchancements
+2019 v19 db api, sql developer web 
+
+11gR2+
+support is tied to database license
+XE is supported
+
+HOL - Getting Started with Oracle REST Data Services Series 
+https://apexapps.oracle.com/pls/apex/f?p=44785:24:4925990421331:::24:P24_CONTENT_ID,P24_PREV_PAGE:13282,24
